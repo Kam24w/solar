@@ -4,6 +4,35 @@ body {
   background: linear-gradient(135deg, #ffdd55 0%, #ff9e2c 100%);
 }
 
+/* simple sun graphic */
+.sun-animation {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff7c6 0%, #ffd84d 40%, #ffb200 100%);
+  box-shadow: 0 8px 30px rgba(255,160,0,0.35), inset 0 -6px 20px rgba(0,0,0,0.06);
+  /* separacion mayor para alejar del titulo */
+  margin-bottom: 32px;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 480px) {
+  .sun-animation {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 22px;
+  }
+  .solar-title {
+    font-size: 28px;
+  }
+}
+
 .solar-container {
   padding: 40px;
   max-width: 700px;
@@ -92,3 +121,65 @@ body {
   border-left: 6px solid #ffb200;
   box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
 }
+
+/* 🌞 SOL ANIMADO CON EFECTO GLOW */
+.sun-animation {
+  width: 130px;
+  height: 130px;
+  
+  background: radial-gradient(circle, #ffe066 0%, #ffb200 40%, rgba(255,166,0,0.4) 70%, rgba(255,166,0,0) 100%);
+  
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+
+  animation: sunGlow 4s ease-in-out infinite;
+  filter: blur(2px);
+}
+
+/* Animación suave del resplandor */
+@keyframes sunGlow {
+  0% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.85; }
+}
+
+/* Actions (export/share) */
+.actions { display:flex; gap:10px; margin-top:14px; align-items:center; justify-content:center; }
+.btn { padding:10px 14px; border-radius:10px; border: none; cursor: pointer; font-weight:600; }
+.btn-primary { background: linear-gradient(90deg,#ffe066,#ffb200); color: #fff; box-shadow: 0 6px 18px rgba(0,60,120,0.14); }
+.btn-secondary { background: rgba(255,255,255,0.96); color: #04314a; border: 1px solid rgba(0,0,0,0.06); }
+.btn:active { transform: translateY(1px); }
+.btn:focus { outline: 2px solid rgba(0,110,200,0.12); }
+
+/* Aparición animada de tarjetas */
+@keyframes popIn {
+  0% { transform: scale(.98) translateY(6px); opacity: 0; }
+  60% { transform: scale(1.02) translateY(-4px); opacity: 1; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  0% { transform: translateY(8px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Animación para la tarjeta principal (formulario) al cargar */
+.solar-card { animation: popIn .42s cubic-bezier(.22,.9,.27,1) both; }
+
+/* Animación escalonada para resultados */
+.solar-results .result-item { animation: fadeInUp .36s ease both; animation-fill-mode: both; }
+.solar-results .result-item:nth-child(1) { animation-delay: 0s; }
+.solar-results .result-item:nth-child(2) { animation-delay: 60ms; }
+.solar-results .result-item:nth-child(3) { animation-delay: 120ms; }
+.solar-results .result-item:nth-child(4) { animation-delay: 180ms; }
+.solar-results .result-item:nth-child(5) { animation-delay: 240ms; }
+.solar-results .result-item:nth-child(6) { animation-delay: 300ms; }
+.solar-results .result-item:nth-child(7) { animation-delay: 360ms; }
+.solar-results .result-item:nth-child(8) { animation-delay: 420ms; }
+
+/* pequeña transición para botones */
+.actions .btn { transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease; }
+.actions .btn:hover { transform: translateY(-2px); opacity: 0.98; }
+
+
